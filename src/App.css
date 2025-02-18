@@ -1,38 +1,592 @@
-.App {
-  text-align: center;
+* {
+  -webkit-tap-highlight-color: transparent;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
 }
 
-.App-header {
-  background-color: #282c34;
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
   min-height: 100vh;
+  position: relative;
+  background: #ffffff;
+  font-weight: 400;
+}
+
+.fixed-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  z-index: 9999;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.nav-logo {
+  height: 24px;
+  width: auto;
+}
+
+.join-button {
+  background: #000000;
+  color: #ffffff;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  animation: pulse 1.5s infinite;
+}
+
+.join-button:hover {
+  background: #1a1a1a;
+  transform: translateY(-1px);
+  animation: none;
+}
+
+.main-content {
+  padding-top: 64px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-section {
+  padding: 80px 0;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.hero-logo {
+  width: 180px;
+  height: auto;
+  margin: 0 auto 32px;
+  display: block;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: #666666;
+  margin-bottom: 48px;
+  font-weight: 400;
+  animation: fadeInUp 0.8s ease-out 0.2s backwards;
+}
+
+.version-tag {
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  animation: scaleIn 0.5s ease-out backwards;
+}
+
+.server-ip {
+  display: inline-flex;
+  align-items: center;
+  background: #f8f8f8;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  margin-top: 32px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  animation: fadeInUp 0.5s ease-out 0.4s backwards;
+}
+
+.server-ip:hover {
+  background: #f1f1f1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card {
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #f1f1f1;
+  transition: all 0.2s ease;
+  animation: scaleIn 0.3s ease-out backwards;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.recipe-card {
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #f1f1f1;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  animation: scaleIn 0.3s ease-out backwards;
+}
+
+.recipe-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.recipe-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  cursor: zoom-in;
+  transition: transform 0.15s ease;
+}
+
+.recipe-image:hover {
+  transform: scale(1.02);
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 24px;
+  border-radius: 12px;
   color: white;
+  z-index: 50;
+  animation: slideIn 0.2s ease-out;
+  font-weight: 500;
 }
 
-.App-link {
-  color: #61dafb;
+.toast-success {
+  background-color: #059669;
 }
 
-@keyframes App-logo-spin {
+.toast-error {
+  background-color: #dc2626;
+}
+
+@keyframes slideIn {
   from {
-    transform: rotate(0deg);
+    transform: translateY(100%);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.hero-section h1 {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@media (max-width: 640px) {
+  .hero-logo {
+    width: 140px;
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+  }
+
+  .server-ip {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .feature-card, .recipe-card {
+    padding: 24px;
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  cursor: zoom-out;
+  backdrop-filter: blur(4px);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 16px;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  animation: modalIn 0.3s ease forwards;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.footer {
+  border-top: 1px solid #f1f1f1;
+  padding: 48px 0;
+  background: #fafafa;
+  margin-top: 64px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+}
+
+.footer-logo {
+  height: 24px;
+  width: auto;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.footer-logo:hover {
+  opacity: 1;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  color: #666;
+  font-size: 14px;
+}
+
+.footer-links a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #000;
+}
+
+.footer-copyright {
+  color: #999;
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .footer {
+    padding: 32px 0;
+    margin-top: 48px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.player-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.player-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 1px solid #f1f1f1;
+  animation: fadeInUp 0.4s ease-out forwards;
+  opacity: 0;
+  animation-delay: calc(var(--animation-order, 0) * 0.05s);
+  text-decoration: none;
+  display: block;
+}
+
+.player-card.empty {
+  background: #ffffff;
+  border: 1px solid #f1f1f1;
+}
+
+.player-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.player-card.empty:hover {
+  background: #fafafa;
+}
+
+.player-card.empty:hover .player-role {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.player-avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #f1f1f1;
+}
+
+.player-avatar.empty {
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-slot-number {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #cccccc;
+  transition: color 0.3s ease;
+}
+
+.player-card.empty:hover .empty-slot-number {
+  color: #999999;
+}
+
+.player-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333333;
+}
+
+.player-role {
+  font-size: 0.9rem;
+  color: #666666;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.player-card.empty .player-name {
+  color: #666666;
+}
+
+.player-card.empty:hover .player-name {
+  color: #333333;
+}
+
+@media (max-width: 768px) {
+  .player-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .player-avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .player-name {
+    font-size: 1rem;
+  }
+
+  .player-role {
+    font-size: 0.8rem;
+  }
+}
+
+.nav-link {
+  color: #666666;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.nav-link:hover {
+  color: #000000;
+  background: #f8f8f8;
+}
+
+.team-card {
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid #f1f1f1;
+  background: #ffffff;
+  text-align: center;
+  transition: all 0.2s ease;
+  animation: scaleIn 0.3s ease-out backwards;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.team-avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-avatar img {
+  width: 40px;
+  height: auto;
+  opacity: 0.7;
+}
+
+.patch-note {
+  background: #ffffff;
+  border: 1px solid #f1f1f1;
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.2s ease;
+}
+
+.patch-note:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.patch-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.patch-date {
+  font-size: 14px;
+  color: #666666;
+  font-weight: 500;
+}
+
+.patch-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #666666;
+}
+
+.patch-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.patch-list li:last-child {
+  margin-bottom: 0;
+}
+
+.patch-list li::before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  color: #000000;
+}
+
+@media (max-width: 768px) {
+  .team-card {
+    padding: 24px;
+  }
+
+  .patch-note {
+    padding: 20px;
+  }
+
+  .patch-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 }
