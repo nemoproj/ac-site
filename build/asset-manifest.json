@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ac-site/static/css/main.828674e9.css",
+    "main.js": "/ac-site/static/js/main.d0c14559.js",
+    "static/js/453.1ce09c26.chunk.js": "/ac-site/static/js/453.1ce09c26.chunk.js",
+    "index.html": "/ac-site/index.html",
+    "main.828674e9.css.map": "/ac-site/static/css/main.828674e9.css.map",
+    "main.d0c14559.js.map": "/ac-site/static/js/main.d0c14559.js.map",
+    "453.1ce09c26.chunk.js.map": "/ac-site/static/js/453.1ce09c26.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.828674e9.css",
+    "static/js/main.d0c14559.js"
+  ]
+}
