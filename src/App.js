@@ -201,7 +201,7 @@ function App() {
   };
 
   return (
-    <Router basename="/ac-page">
+    <Router basename="/ac-site">
       <Routes>
         <Route path="/" element={
           <AppContext.Provider value={{ copyText }}>
