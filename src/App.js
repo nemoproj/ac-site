@@ -6,7 +6,7 @@ import PatchNotes from './PatchNotes';
 import './App.css';
 
 // Use logo2.png as fallback since it's smaller
-const FALLBACK_IMG = '/logo2.png';
+const FALLBACK_IMG = '/ac-site/logo2.png';
 
 const AppContext = React.createContext();
 
@@ -60,7 +60,7 @@ const RecipeCard = ({ title, description, imageNumber }) => {
     <>
       <div className="recipe-card">
         <img
-          src={`/${imageNumber}.bmp`}
+          src={`/ac-site/${imageNumber}.bmp`}
           alt={title}
           loading="eager"
           decoding="async"
@@ -75,7 +75,7 @@ const RecipeCard = ({ title, description, imageNumber }) => {
         <p className="text-gray-600 leading-relaxed">{description}</p>
       </div>
       <ImageModal
-        src={`/${imageNumber}.bmp`}
+        src={`/ac-site/${imageNumber}.bmp`}
         alt={title}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -151,12 +151,12 @@ const Footer = () => (
   <footer className="footer">
     <div className="footer-content">
       <a href="https://github.com/nemoproj" target="_blank" rel="noopener noreferrer">
-        <img src="/logo2.png" alt="alphacorp" className="footer-logo" />
+        <img src="/ac-site/logo2.png" alt="alphacorp" className="footer-logo" />
       </a>
       <div className="footer-links">
         <a href="https://github.com/nemoproj" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="#connection-guide">서버 참여하기</a>
-        <a href="https://discord.gg/your-discord" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a href="https://discord.gg/49Ec7PUUHg" target="_blank" rel="noopener noreferrer">Discord</a>
         <a href="https://www.youtube.com/@alphacorp86" target="_blank" rel="noopener noreferrer">YouTube</a>
         <a href="https://www.instagram.com/_alpha.corp" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
@@ -212,7 +212,7 @@ function App() {
                   <div className="max-w-4xl mx-auto px-4">
                     <h1 className="text-7xl font-bold mb-6">소울스왑 SMP</h1>
                     <p className="hero-subtitle text-2xl">차세대 마인크래프트 SMP <span className="version-tag bg-green-100 text-green-700 align-middle">BETA</span></p>
-                    <p className="hero-subtitle text-2xl">built by <a href="https://github.com/nemoproj"><img src="/logo1.png" alt="nemoproj" className="inline-block h-6 w-auto mr-2" /></a></p>
+                    <p className="hero-subtitle text-2xl">built by <a href="https://github.com/nemoproj"><img src="/ac-site/logo1.png" alt="nemoproj" className="inline-block h-6 w-auto mr-2" /></a></p>
                     <div className="flex flex-wrap justify-center gap-2 mb-8">
                       <div className="flex gap-2">
                         <span className="version-tag bg-blue-100 text-blue-700">

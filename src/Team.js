@@ -31,7 +31,7 @@ function Team() {
       description: '서버의 기술적인 측면을 담당하며, 게임 시스템과 플러그인을 개발하고 유지보수합니다.',
       members: [
         {
-          name: 'Tuco Salamanca',
+          name: '바실리',
           position: '플러그인 개발자',
           avatar: 'https://avatars.githubusercontent.com/u/198909138?s=88&v=4'
         },
@@ -47,12 +47,12 @@ function Team() {
       description: '서버의 원활한 운영과 커뮤니티 관리를 담당하며, 플레이어들의 피드백을 수집하고 반영합니다.',
       members: [
         {
-          name: 'isaac1113',
+          name: '길승우',
           position: '서버 관리자',
           avatar: 'https://avatars.githubusercontent.com/u/173257854?s=88&v=4'
         },
         {
-          name: 'J.Y.KIM',
+          name: '김주영',
           position: '커뮤니티 매니저',
           avatar: 'https://avatars.githubusercontent.com/u/156347229?s=88&v=4'
         }
