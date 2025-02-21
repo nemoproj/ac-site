@@ -1,19 +1,19 @@
 {
   "short_name": "소울스왑 SMP",
-  "name": "소울스왑 SMP - 차세대 마인크래프트 서버",
+  "name": "소울스왑 SMP - 차세대 마인크래프트 SMP",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "logo2-squared.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/png"
     },
     {
-      "src": "logo2.png",
+      "src": "logo2-squared.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo1.png",
+      "src": "logo2-squared.png",
       "type": "image/png",
       "sizes": "512x512"
     }
