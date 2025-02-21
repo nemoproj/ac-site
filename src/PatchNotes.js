@@ -19,8 +19,17 @@ const PatchNote = ({ version, date, changes }) => (
 function PatchNotes() {
   const patches = [
     {
+      version: 'v0.1.1 BETA',
+      date: '2025.2.20',
+      changes: [
+        '/r, /reply 커맨드 추가 (가장 마지막으로 /msg 을 보낸 사람에게 답장하세요)',
+        'startup sprite를 title에서 actionbar로 옮김 ()',
+      ]
+    
+    },
+    {
       version: 'v0.1.0 BETA',
-      date: '2025.1.18',
+      date: '2025.2.18',
       changes: [
         '소울스왑 SMP 서버 오픈',
       ]
